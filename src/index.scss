@@ -1,15 +1,21 @@
-.cars-container {
-  .cars-container-item {
-    display: flex;
-    gap: 0, 20px;
-
-  &__model {
-    color: orangered
-  }
-
-  &__image {
-    width: 40px;
-    height: 40px;
-  }
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  src: local('Poppins'), url('./assets/font/Poppins-Medium.ttf') format('truetype');
 }
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  src: local('Poppins'), url('./assets/font/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 700;
+  src: local('Poppins'), url('./assets/font/Poppins-Bold.ttf') format('truetype');
+}
+
+.app {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
 }
