@@ -31,7 +31,7 @@ const LoginPage = (props) => {
   }
 
   const handleNavigate = () => {
-    navigate('/register')
+    navigate('/register');
   }
 
   const helperTextPass = 'Do not share your password with anyone'; 
