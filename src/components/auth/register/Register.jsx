@@ -45,7 +45,7 @@ const RegisterPage = (props) => {
           helperText="Incorrect password"
           InputLabelProps={{shrink: true}} 
           type="password"
-          sx={{"& .MuiOutlinedInput-root":{'&.Mui-focused':{"& .MuiOutlinedInput-notchedOutline":{ borderColor: "#d32f2f"}}}, "& .MuiInputLabel-root": { "&.Mui-focused": {color: "#d32f2f",},},}}
+          sx={{"& .MuiOutlinedInput-root":{color: "#d32f2f", '&.Mui-focused':{"& .MuiOutlinedInput-notchedOutline":{ borderColor: "#d32f2f"}}}, "& .MuiInputLabel-root": { "&.Mui-focused": {color: "#d32f2f",},},}}
           fullWidth={true}
           margin='normal'
           placeholder="Повторите ваш пароль"
