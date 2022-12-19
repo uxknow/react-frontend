@@ -17,6 +17,7 @@ export const StyledTextField = styled(TextField, {
     borderRadius: "14px",
   },
   "& .MuiInputLabel-root": {
+    color: "#777",
     "&.Mui-focused": {
       color: "#03a9f4",
     },
@@ -24,8 +25,15 @@ export const StyledTextField = styled(TextField, {
   "& .MuiOutlinedInput-input": {
     boxShadow: "0 0 0px 1000px white inset", //чтоб убрать цвет input:-webkit-autofill
     borderRadius: "14px",
+    backgroundColor: "white",
+    color: "#777",
   },
   "& input:-webkit-autofill": {
     borderRadius: "14px",
+    boxShadow: "0 0 0px 1000px white inset",
+    textFillColor: "#777",
+  },
+  "& .MuiFormHelperText-root": {
+    color: "#d32f2f",
   },
 });

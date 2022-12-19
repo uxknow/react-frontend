@@ -1,0 +1,11 @@
+import { styled, Box } from "@mui/material"
+
+const FlexBetween = styled(Box, {
+  name: 'FlexBetween',
+})({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
+})
+
+export default FlexBetween

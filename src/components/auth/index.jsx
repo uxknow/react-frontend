@@ -23,7 +23,7 @@ const AuthRootComponent = () => {
 
   useEffect(() => {
     const err = password !== repeatPassword && repeatPassword.length > 0 ?
-      false : true;
+      true : false;
     setErrorPassword(err)
   }, [repeatPassword])
 
@@ -91,7 +91,7 @@ const AuthRootComponent = () => {
                     setPassword={setPassword} 
                     setRepeatPassword={setRepeatPassword}
                     setUsername={setUsername}
-                    errorPassword={!errorPassword}
+                    errorPassword={errorPassword}
                     navigate={navigate}
                     /> : 
                   null 
