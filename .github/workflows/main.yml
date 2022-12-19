@@ -7,7 +7,6 @@ on:
   contents: write
 jobs:
   build:
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,3 +22,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+
