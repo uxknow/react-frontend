@@ -22,8 +22,8 @@ export const StyledBoxFlexBetween = styled(Box, {
   name: "StyledBoxFlexBetween",
 })({
   display: "flex",
-  justifyContent: "space-between",
   alignItems: "center",
+  gap: "16px",
 });
 
 export const StyledBoxLogo = styled(Box, {
@@ -31,6 +31,7 @@ export const StyledBoxLogo = styled(Box, {
 })({
   display: "flex",
   alignItems: "center",
+  justifyContent: "space-between",
   gap: "10px",
   marginLeft: "16px",
   marginTop: "30px",

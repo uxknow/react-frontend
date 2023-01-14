@@ -3,10 +3,8 @@ import { useAuth } from "../hook";
 
 const PrivateRoute = () => {
   const auth = useAuth();
-  return (
-    //  auth ? <Outlet /> : <Navigate to="login" /> это основной код
-    auth ? <Navigate to="login" /> : <Outlet />
-  );
+  //return auth ? <Outlet /> : <Navigate to="login" />; //это основной код
+  return auth ? <Navigate to="login" /> : <Outlet />;
 };
 
 export default PrivateRoute;
