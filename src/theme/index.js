@@ -39,6 +39,7 @@ export const tokens = (mode) => ({
           DEFAULT: "#3C3C3C",
         },
         accentMain: "#0F0E0E",
+        borderColor: "#3C3C3C",
       }
     : {
         white: {
@@ -69,6 +70,7 @@ export const tokens = (mode) => ({
           DEFAULT: "#3C3C3C",
         },
         accentMain: "#F7F7F7",
+        borderColor: "#D1D1D1",
       }),
 });
 

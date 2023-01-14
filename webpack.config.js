@@ -8,6 +8,7 @@ module.exports = {
     filename: "bundle.main.js",
     clean: true,
     publicPath: "/",
+    assetModuleFilename: "assets/images/sidebar/[name].[ext]",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -23,7 +24,7 @@ module.exports = {
     static: path.resolve(__dirname, "src"),
     historyApiFallback: true,
     open: true,
-    // host: "0.0.0.0",
+    //host: "0.0.0.0",
   },
   module: {
     rules: [
@@ -40,7 +41,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.jpg$/,
+        test: /\.(png|jpg|jpeg|svg)$/,
         type: "asset/resource",
       },
     ],

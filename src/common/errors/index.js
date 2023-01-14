@@ -1,3 +1,3 @@
 export const AppErrors = {
-  PasswordDoNotMatch: "У вас не совпадают пароли",
+  PasswordDoNotMatch: "Ваши пароли не совпадают",
 };
