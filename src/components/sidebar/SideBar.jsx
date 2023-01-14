@@ -72,17 +72,21 @@ const SideBarComponent = (props) => {
         >
           <Box width="100%">
             <StyledBoxNavBlock>
-              <StyledBoxFlexBetween>
+              <Box>
                 <StyledBoxLogo>
-                  <img src={Logo} alt="logo-icon" />
-                  <StyledTypographyLogo variant="h1">Demo</StyledTypographyLogo>
+                  <StyledBoxFlexBetween>
+                    <img src={Logo} alt="logo-icon" />
+                    <StyledTypographyLogo variant="h1">
+                      Demo
+                    </StyledTypographyLogo>
+                  </StyledBoxFlexBetween>
                   {!isNonMobile && (
                     <IconButton onClick={() => setIsOpen(!isOpen)}>
                       <ChevronLeftOutlined />
                     </IconButton>
                   )}
                 </StyledBoxLogo>
-              </StyledBoxFlexBetween>
+              </Box>
               <StyledListNavItems>{renderNavMenu}</StyledListNavItems>
             </StyledBoxNavBlock>
             <Box width="100%">

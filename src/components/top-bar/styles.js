@@ -1,20 +1,41 @@
 import { styled } from "@mui/system";
-import { Box, Grid, IconButton, InputBase } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Grid,
+  IconButton,
+  InputBase,
+} from "@mui/material";
 import { tokens } from "../../theme";
 
-export const StyledBoxContainer = styled(Box, {
-  name: "StyledBoxContainer",
+export const StyledAppBar = styled(AppBar, {
+  name: "StyledAppBar",
 })(({ theme }) => {
   const colors = tokens(theme.palette.mode);
   return {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "24px 48px",
+    position: "static",
     maxHeight: "96px",
     background: `${colors.primary.DEFAULT}`,
     borderBottom: `1px solid ${colors.borderColor}`,
+    boxShadow: "none",
   };
+});
+
+export const StyledToolbar = styled(Toolbar, {
+  name: "StyledToolbar",
+})({
+  display: "flex",
+  justifyContent: "space-between",
+  padding: "24px 44px",
+});
+
+export const StyledBoxMenuBlock = styled(Box, {
+  name: "StyledBoxMenuBlock",
+})({
+  display: "flex",
+  gap: "10px",
+  alignItems: "center",
 });
 
 export const StyledIconButtonMode = styled(IconButton, {
