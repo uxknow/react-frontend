@@ -36,4 +36,7 @@ export const StyledTextField = styled(TextField, {
   "& .MuiFormHelperText-root": {
     color: "#d32f2f",
   },
+  "&.MuiFormControl-root": {
+    height: "70px",
+  },
 });

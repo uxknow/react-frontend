@@ -8,6 +8,7 @@ import { instance } from "../../utils/axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/slice/auth";
 import { AppErrors } from "../../common/errors";
+import { useForm } from "react-hook-form";
 
 const AuthRootComponent = () => {
   const location = useLocation();
@@ -19,6 +20,12 @@ const AuthRootComponent = () => {
   const [errorPassword, setErrorPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  console.log(errors);
 
   useEffect(() => {
     const err =
@@ -26,14 +33,13 @@ const AuthRootComponent = () => {
     setErrorPassword(err);
   }, [repeatPassword]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmitForm = async (data) => {
+    console.log(data);
     if (location.pathname === "/login") {
       try {
         const userData = {
-          email,
-          password,
+          email: data.email,
+          password: data.password,
         };
 
         const user = await instance.post("auth/login", userData);
@@ -66,7 +72,7 @@ const AuthRootComponent = () => {
 
   return (
     <div className="root">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
         <Box
           display="flex"
           justifyContent="center"
@@ -84,9 +90,9 @@ const AuthRootComponent = () => {
         >
           {location.pathname === "/login" ? (
             <LoginPage
-              setEmail={setEmail}
-              setPassword={setPassword}
+              errorsMessage={errors}
               navigate={navigate}
+              register={register}
             />
           ) : location.pathname === "/register" ? (
             <RegisterPage

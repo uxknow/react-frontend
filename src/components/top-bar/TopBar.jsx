@@ -19,17 +19,17 @@ import {
   StyledBoxMenuBlock,
 } from "./styles";
 
-const TopBarComponent = ({ setIsOpen, isOpen }) => {
+const TopBarComponent = ({ setIsOpen, isOpen, isNonMobile }) => {
   const { user } = useSelector((state) => state.auth.user);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <StyledAppBar>
+    <StyledAppBar position={isNonMobile ? "static" : "fixed"}>
       <StyledToolbar>
         <StyledBoxMenuBlock>
           {!isOpen && (
-            <IconButton onClick={() => setIsOpen(!isOpen)}>
+            <IconButton onClick={() => setIsOpen(true)}>
               <ChevronRightOutlinedIcon />
             </IconButton>
           )}

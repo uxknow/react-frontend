@@ -14,7 +14,6 @@ export const StyledAppBar = styled(AppBar, {
 })(({ theme }) => {
   const colors = tokens(theme.palette.mode);
   return {
-    position: "static",
     maxHeight: "96px",
     background: `${colors.primary.DEFAULT}`,
     borderBottom: `1px solid ${colors.borderColor}`,
