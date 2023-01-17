@@ -41,7 +41,9 @@ const LayoutComponent = (/*{ children }*/) => {
             isNonMobile={isNonMobile}
           />
           {/* {children} */}
-          <Outlet />
+          <Box sx={{ marginTop: `${isNonMobile ? "0px" : "90px"}` }}>
+            <Outlet />
+          </Box>
         </StyledBoxMainSection>
       </Box>
     </>

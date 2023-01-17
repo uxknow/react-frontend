@@ -2,35 +2,11 @@ import { Button, Typography } from "@mui/material";
 import { StyledTextField } from "../StyledTextField";
 
 const RegisterPage = (props) => {
-  const {
-    setEmail,
-    setPassword,
-    setRepeatPassword,
-    setFirstName,
-    setUsername,
-    errorPassword,
-    navigate,
-  } = props;
+  const { navigate, register, errorsMessage } = props;
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
+  // const handleRepeatPassword = (e) => {
+  //   setRepeatPassword(e.target.value);
+  // };
 
   const handleNavigate = () => {
     navigate("/login");
@@ -56,25 +32,30 @@ const RegisterPage = (props) => {
         Введите данные для регистрации
       </Typography>
       <StyledTextField
-        onChange={handleFirstName}
+        error={!!errorsMessage.name}
+        helperText={errorsMessage.name?.message}
         InputLabelProps={{ shrink: true }}
         fullWidth={true}
         margin="normal"
         label="Имя"
         variant="outlined"
         placeholder="Введите ваше имя"
+        {...register("name")}
       />
       <StyledTextField
-        onChange={handleUsername}
+        error={!!errorsMessage.username}
+        helperText={errorsMessage.username?.message}
         InputLabelProps={{ shrink: true }}
         fullWidth={true}
         margin="normal"
         label="Username"
         variant="outlined"
         placeholder="Введите ваш username"
+        {...register("username")}
       />
       <StyledTextField
-        onChange={handleEmail}
+        error={!!errorsMessage.email}
+        helperText={errorsMessage.email?.message}
         InputLabelProps={{ shrink: true }}
         type="email"
         autoComplete="email"
@@ -83,9 +64,11 @@ const RegisterPage = (props) => {
         label="Email"
         variant="outlined"
         placeholder="Введите ваш email"
+        {...register("email")}
       />
       <StyledTextField
-        onChange={handlePassword}
+        error={!!errorsMessage.password}
+        helperText={errorsMessage.password?.message}
         InputLabelProps={{ shrink: true }}
         type="password"
         fullWidth={true}
@@ -93,43 +76,20 @@ const RegisterPage = (props) => {
         label="Password"
         variant="outlined"
         placeholder="Введите ваш пароль"
+        {...register("password")}
       />
-      {errorPassword ? (
-        <StyledTextField
-          onChange={handleRepeatPassword}
-          error
-          id="outlined-error-helper-text"
-          label="Error"
-          helperText="Incorrect password"
-          InputLabelProps={{ shrink: true }}
-          type="password"
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              color: "#d32f2f",
-              "&.Mui-focused": {
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#d32f2f",
-                },
-              },
-            },
-            "& .MuiInputLabel-root": { "&.Mui-focused": { color: "#d32f2f" } },
-          }}
-          fullWidth={true}
-          margin="normal"
-          placeholder="Повторите ваш пароль"
-        />
-      ) : (
-        <StyledTextField
-          onChange={handleRepeatPassword}
-          InputLabelProps={{ shrink: true }}
-          type="password"
-          fullWidth={true}
-          margin="normal"
-          label="Password"
-          variant="outlined"
-          placeholder="Повторите ваш пароль"
-        />
-      )}
+      <StyledTextField
+        error={!!errorsMessage.confirmPassword}
+        helperText={errorsMessage.confirmPassword?.message}
+        InputLabelProps={{ shrink: true }}
+        type="password"
+        fullWidth={true}
+        margin="normal"
+        label="Password"
+        variant="outlined"
+        placeholder="Повторите ваш пароль"
+        {...register("confirmPassword")}
+      />
       <Button
         type="submit"
         sx={{
