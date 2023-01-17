@@ -38,9 +38,27 @@ const LoginPage = (props) => {
         label={!errorsMessage.email ? "Email" : "Error"}
         variant="outlined"
         placeholder="Введите ваш email"
-        {...register("email", {
-          required: "Email is required",
-        })}
+        {...register("email")}
+        sx={{
+          "&:hover": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
+            },
+          },
+          "& .MuiOutlinedInput-root": {
+            "&.Mui-focused": {
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
+              },
+            },
+          },
+          "& .MuiInputLabel-root": {
+            color: `${errorsMessage.email ? "#d32f2f" : "#777"}`,
+            "&.Mui-focused": {
+              color: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
+            },
+          },
+        }}
       />
       <StyledTextField
         error={!!errorsMessage.password}
@@ -53,10 +71,7 @@ const LoginPage = (props) => {
         label={!errorsMessage.password ? "Password" : "Error"}
         variant="outlined"
         placeholder="Введите ваш пароль"
-        {...register("password", {
-          required: "Email is required",
-          minLength: 6,
-        })}
+        {...register("password")}
         sx={{
           "&:hover": {
             "& .MuiOutlinedInput-notchedOutline": {
