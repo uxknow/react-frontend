@@ -1,20 +1,13 @@
 import {
   Box,
   Drawer,
-  Divider,
   IconButton,
   List,
   ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
   useTheme,
 } from "@mui/material";
-import {
-  ChevronLeftOutlined,
-  ChevronRightOutlined,
-  LogoutRounded,
-} from "@mui/icons-material";
+import { ChevronLeftOutlined, LogoutRounded } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { navMenu } from "../../common/moks/navigate";
@@ -28,7 +21,7 @@ import {
   StyledListItemTextNav,
   StyledListNavItems,
   StyledTypographyLogo,
-} from "./styles";
+} from "./styled";
 
 const SideBarComponent = (props) => {
   const [active, setActive] = useState("");
@@ -38,12 +31,15 @@ const SideBarComponent = (props) => {
   const theme = useTheme();
 
   useEffect(() => {
-    setActive(pathname.slice(1));
+    setActive(pathname);
   }, [pathname]);
 
   const renderNavMenu = navMenu.map(({ id, name, icon, path }) => (
     <ListItem key={id}>
-      <StyledListItemButtonNav onClick={() => navigate(`${path}`)}>
+      <StyledListItemButtonNav
+        onClick={() => navigate(`${path}`)}
+        className={active === path ? "active" : ""}
+      >
         <StyledListItemIconNav>{icon}</StyledListItemIconNav>
         <StyledListItemTextNav>
           <Typography variant="body1">{name}</Typography>

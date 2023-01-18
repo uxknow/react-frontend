@@ -1,4 +1,6 @@
 import { styled } from "@mui/system";
+import { tokens } from "../../theme";
+
 import {
   Box,
   ListItemButton,
@@ -7,7 +9,6 @@ import {
   List,
   Typography,
 } from "@mui/material";
-import { tokens } from "../../theme";
 
 export const StyledBoxNavBlock = styled(Box, {
   name: "StyledBoxNavBlock",
@@ -53,8 +54,17 @@ export const StyledListItemButtonNav = styled(ListItemButton, {
 })(({ theme }) => {
   const colors = tokens(theme.palette.mode);
   return {
+    "&.active": {
+      background: `${colors.active}`,
+      color: `${colors.white.DEFAULT}`,
+      borderRadius: "4px",
+      "&:hover": {
+        cursor: "auto",
+      },
+    },
+
     "&:hover": {
-      background: "#1900D5",
+      background: `${colors.active}`,
       color: `${colors.white.DEFAULT}`,
       borderRadius: "4px",
       cursor: "pointer",

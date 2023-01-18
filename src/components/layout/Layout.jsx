@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import SideBarComponent from "../sidebar/SideBar";
 import TopBarComponent from "../top-bar/TopBar";
-import { StyledBoxMainSection } from "./styles";
+import { StyledBoxMainSection } from "./styled";
 
 const LayoutComponent = (/*{ children }*/) => {
   const location = useLocation();
