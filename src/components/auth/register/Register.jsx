@@ -1,12 +1,14 @@
-import { Button, Typography } from "@mui/material";
-import { StyledTextField } from "../StyledTextField";
+import {
+  StyledButtonForm,
+  StyledSpanLinkText,
+  StyledTypographyQuestionText,
+  StyledTypographySubtitle,
+  StyledTypographyTitle,
+  StyledTextField,
+} from "../styled";
 
 const RegisterPage = (props) => {
   const { navigate, register, errorsMessage } = props;
-
-  // const handleRepeatPassword = (e) => {
-  //   setRepeatPassword(e.target.value);
-  // };
 
   const handleNavigate = () => {
     navigate("/login");
@@ -14,23 +16,10 @@ const RegisterPage = (props) => {
 
   return (
     <>
-      <Typography
-        variant="h3"
-        fontFamily="Poppins"
-        textAlign="center"
-        color="#333"
-      >
-        Регистрация
-      </Typography>
-      <Typography
-        variant="body2"
-        marginBottom={3}
-        fontFamily="Poppins"
-        textAlign="center"
-        color="#333"
-      >
+      <StyledTypographyTitle variant="h3">Регистрация</StyledTypographyTitle>
+      <StyledTypographySubtitle variant="body2">
         Введите данные для регистрации
-      </Typography>
+      </StyledTypographySubtitle>
       <StyledTextField
         error={!!errorsMessage.name}
         helperText={errorsMessage.name?.message}
@@ -41,6 +30,7 @@ const RegisterPage = (props) => {
         variant="outlined"
         placeholder="Введите ваше имя"
         {...register("name")}
+        className={errorsMessage.name ? "error" : ""}
       />
       <StyledTextField
         error={!!errorsMessage.username}
@@ -52,6 +42,7 @@ const RegisterPage = (props) => {
         variant="outlined"
         placeholder="Введите ваш username"
         {...register("username")}
+        className={errorsMessage.username ? "error" : ""}
       />
       <StyledTextField
         error={!!errorsMessage.email}
@@ -65,6 +56,7 @@ const RegisterPage = (props) => {
         variant="outlined"
         placeholder="Введите ваш email"
         {...register("email")}
+        className={errorsMessage.email ? "error" : ""}
       />
       <StyledTextField
         error={!!errorsMessage.password}
@@ -77,6 +69,7 @@ const RegisterPage = (props) => {
         variant="outlined"
         placeholder="Введите ваш пароль"
         {...register("password")}
+        className={errorsMessage.password ? "error" : ""}
       />
       <StyledTextField
         error={!!errorsMessage.confirmPassword}
@@ -89,35 +82,17 @@ const RegisterPage = (props) => {
         variant="outlined"
         placeholder="Повторите ваш пароль"
         {...register("confirmPassword")}
+        className={errorsMessage.confirmPassword ? "error" : ""}
       />
-      <Button
-        type="submit"
-        sx={{
-          color: "#fff",
-          fontFamily: "Poppins",
-          marginTop: 2,
-          marginBottom: 2,
-          width: "60%",
-          backgroundColor: "#03a9f4",
-          borderRadius: "12px",
-        }}
-        variant="contained"
-      >
+      <StyledButtonForm type="submit" variant="contained">
         Регистрация
-      </Button>
-      <Typography
-        variant="body2"
-        sx={{ fontFamily: "Poppins", color: "#333", opacity: 0.8 }}
-      >
+      </StyledButtonForm>
+      <StyledTypographyQuestionText variant="body2">
         У вас уже есть аккаунт?
-        <span className="registerLinkText" onClick={handleNavigate}>
-          Войти
-        </span>
-      </Typography>
+        <StyledSpanLinkText onClick={handleNavigate}>Войти</StyledSpanLinkText>
+      </StyledTypographyQuestionText>
     </>
   );
 };
 
 export default RegisterPage;
-
-//<StyledTextField onChange={handleRepeatPassword} sx={error ? {"& .MuiOutlinedInput-root":{'&.Mui-focused':{"& .MuiOutlinedInput-notchedOutline":{ borderColor: 'red'}}}, '& fieldset': {borderColor: 'red'}} : ''} helperText={error} InputLabelProps={{shrink: true}} type="password" fullWidth={true} margin='normal' label="Password" variant="outlined" placeholder="Повторите ваш пароль"/>

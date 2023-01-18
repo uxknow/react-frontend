@@ -1,5 +1,11 @@
-import { Button, Typography } from "@mui/material";
-import { StyledTextField } from "../StyledTextField";
+import {
+  StyledSpanLinkText,
+  StyledButtonForm,
+  StyledTypographyQuestionText,
+  StyledTypographySubtitle,
+  StyledTypographyTitle,
+  StyledTextField,
+} from "../styled";
 
 const LoginPage = (props) => {
   const { navigate, register, errorsMessage } = props;
@@ -10,23 +16,10 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <Typography
-        variant="h3"
-        fontFamily="Poppins"
-        textAlign="center"
-        color="#333"
-      >
-        Авторизация
-      </Typography>
-      <Typography
-        variant="body2"
-        marginBottom={3}
-        fontFamily="Poppins"
-        textAlign="center"
-        color="#333"
-      >
+      <StyledTypographyTitle variant="h2">Авторизация</StyledTypographyTitle>
+      <StyledTypographySubtitle variant="body2">
         Введите ваш логин и пароль
-      </Typography>
+      </StyledTypographySubtitle>
       <StyledTextField
         error={!!errorsMessage.email}
         helperText={errorsMessage.email?.message}
@@ -39,26 +32,7 @@ const LoginPage = (props) => {
         variant="outlined"
         placeholder="Введите ваш email"
         {...register("email")}
-        sx={{
-          "&:hover": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
-            },
-          },
-          "& .MuiOutlinedInput-root": {
-            "&.Mui-focused": {
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
-              },
-            },
-          },
-          "& .MuiInputLabel-root": {
-            color: `${errorsMessage.email ? "#d32f2f" : "#777"}`,
-            "&.Mui-focused": {
-              color: `${errorsMessage.email ? "#d32f2f" : "#03a9f4"}`,
-            },
-          },
-        }}
+        className={errorsMessage.email ? "error" : ""}
       />
       <StyledTextField
         error={!!errorsMessage.password}
@@ -72,54 +46,17 @@ const LoginPage = (props) => {
         variant="outlined"
         placeholder="Введите ваш пароль"
         {...register("password")}
-        sx={{
-          "&:hover": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: `${errorsMessage.password ? "#d32f2f" : "#03a9f4"}`,
-            },
-          },
-          "& .MuiOutlinedInput-root": {
-            "&.Mui-focused": {
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: `${
-                  errorsMessage.password ? "#d32f2f" : "#03a9f4"
-                }`,
-              },
-            },
-          },
-          "& .MuiInputLabel-root": {
-            color: `${errorsMessage.password ? "#d32f2f" : "#777"}`,
-            "&.Mui-focused": {
-              color: `${errorsMessage.password ? "#d32f2f" : "#03a9f4"}`,
-            },
-          },
-        }}
+        className={errorsMessage.password ? "error" : ""}
       />
-      <Button
-        type="submit"
-        sx={{
-          fontFamily: "Poppins",
-          marginTop: 2,
-          marginBottom: 2,
-          width: "60%",
-          borderRadius: "12px",
-          backgroundColor: "#03a9f4",
-          color: "#fff",
-        }}
-        // color="primary"
-        variant="contained"
-      >
+      <StyledButtonForm type="submit" variant="contained">
         Войти
-      </Button>
-      <Typography
-        variant="body2"
-        sx={{ fontFamily: "Poppins", color: "#333", opacity: 0.8 }}
-      >
+      </StyledButtonForm>
+      <StyledTypographyQuestionText variant="body2">
         У вас нет аккаунта?
-        <span className="registerLinkText" onClick={handleNavigate}>
+        <StyledSpanLinkText onClick={handleNavigate}>
           Регистрация
-        </span>
-      </Typography>
+        </StyledSpanLinkText>
+      </StyledTypographyQuestionText>
     </>
   );
 };

@@ -1,8 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginPage from "login/Login";
 import RegisterPage from "register/Register";
-import "./style.scss";
-import { Box } from "@mui/system";
 import { instance } from "../../utils/axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/slice/auth";
@@ -10,6 +8,7 @@ import { AppErrors } from "../../common/errors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema, registerSchema } from "../../utils/yup";
+import { StyledBoxFormBlock, StyledDivContainer, StyledForm } from "./styled";
 
 const AuthRootComponent = () => {
   const location = useLocation();
@@ -63,23 +62,9 @@ const AuthRootComponent = () => {
   };
 
   return (
-    <div className="root">
-      <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          maxWidth={540}
-          margin="auto"
-          padding={5}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            background:
-              "linear-gradient(177.09deg, #FFFFFF 6.15%, #03a9f4 202.69%)",
-          }}
-        >
+    <StyledDivContainer>
+      <StyledForm onSubmit={handleSubmit(handleSubmitForm)}>
+        <StyledBoxFormBlock>
           {location.pathname === "/login" ? (
             <LoginPage
               errorsMessage={errors}
@@ -93,9 +78,9 @@ const AuthRootComponent = () => {
               register={register}
             />
           ) : null}
-        </Box>
-      </form>
-    </div>
+        </StyledBoxFormBlock>
+      </StyledForm>
+    </StyledDivContainer>
   );
 };
 

@@ -4,7 +4,6 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
 import { ColorModeContext } from "../../theme";
 import { useContext } from "react";
@@ -17,7 +16,7 @@ import {
   StyledGridIconsBlock,
   StyledToolbar,
   StyledBoxMenuBlock,
-} from "./styles";
+} from "./styled";
 
 const TopBarComponent = ({ setIsOpen, isOpen, isNonMobile }) => {
   const { user } = useSelector((state) => state.auth.user);
