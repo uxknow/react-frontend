@@ -8,7 +8,7 @@ import {
 } from "../styled";
 
 const LoginPage = (props) => {
-  const { navigate, register, errorsMessage } = props;
+  const { navigate, register, errorsMessage, isLoading } = props;
 
   const handleNavigate = () => {
     navigate("/register");
@@ -48,7 +48,7 @@ const LoginPage = (props) => {
         {...register("password")}
         className={errorsMessage.password ? "error" : ""}
       />
-      <StyledButtonForm type="submit" variant="contained">
+      <StyledButtonForm loading={isLoading} type="submit" variant="contained">
         Войти
       </StyledButtonForm>
       <StyledTypographyQuestionText variant="body2">
