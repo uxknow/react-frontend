@@ -8,7 +8,7 @@ import { StyledBoxMainSection } from "./styled";
 
 const LayoutComponent = (/*{ children }*/) => {
   const location = useLocation();
-  const isNonMobile = useMediaQuery("(min-width: 850px)");
+  const isNonMobile = useMediaQuery("(min-width: 870px)");
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const LayoutComponent = (/*{ children }*/) => {
     <>
       <Box
         sx={{
-          display: { isNonMobile } ? "flex" : "block",
+          display: `${isNonMobile ? "flex" : "block"}`,
           height: "100%",
         }}
       >
@@ -41,7 +41,11 @@ const LayoutComponent = (/*{ children }*/) => {
             isNonMobile={isNonMobile}
           />
           {/* {children} */}
-          <Box sx={{ marginTop: `${isNonMobile ? "0px" : "90px"}` }}>
+          <Box
+            sx={{
+              marginTop: `${isNonMobile ? "0px" : "90px"}`,
+            }}
+          >
             <Outlet />
           </Box>
         </StyledBoxMainSection>

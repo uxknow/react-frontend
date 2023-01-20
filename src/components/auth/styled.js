@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
-import { Box, Typography, Button, TextField } from "@mui/material";
+import { Box, Typography, TextField } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const formColors = {
   formBg: "linear-gradient(177.09deg, #FFFFFF 6.15%, #03a9f4 202.69%)",
@@ -8,6 +9,8 @@ const formColors = {
   white: "#fff",
   error: "#d32f2f",
   btnHover: "#046ea0",
+  btnDisabled: "rgba(133, 190, 207, 0.9)",
+  loader: "#333",
   link: "#531ee4",
 };
 
@@ -61,7 +64,7 @@ export const StyledTypographySubtitle = styled(Typography, {
   color: formColors.text,
 });
 
-export const StyledButtonForm = styled(Button, {
+export const StyledButtonForm = styled(LoadingButton, {
   name: "StyledButtonForm",
 })({
   marginTop: "16px",
@@ -72,6 +75,12 @@ export const StyledButtonForm = styled(Button, {
   backgroundColor: formColors.blue,
   "&:hover": {
     backgroundColor: formColors.btnHover,
+  },
+  "&.Mui-disabled": {
+    background: formColors.btnDisabled,
+  },
+  "& .MuiLoadingButton-loadingIndicator": {
+    color: formColors.loader,
   },
 });
 

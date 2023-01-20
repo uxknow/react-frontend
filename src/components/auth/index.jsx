@@ -1,19 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginPage from "login/Login";
 import RegisterPage from "register/Register";
-import { instance } from "../../utils/axios";
-import { useDispatch } from "react-redux";
-import { login } from "../../store/slice/auth";
+import { useDispatch, useSelector } from "react-redux";
 import { AppErrors } from "../../common/errors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema, registerSchema } from "../../utils/yup";
 import { StyledBoxFormBlock, StyledDivContainer, StyledForm } from "./styled";
+import { loginUser, registerUser } from "../../store/thunks/auth";
 
 const AuthRootComponent = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading } = useSelector((state) => state.auth);
 
   const {
     register,
@@ -29,13 +29,7 @@ const AuthRootComponent = () => {
   const handleSubmitForm = async (data) => {
     if (location.pathname === "/login") {
       try {
-        const userData = {
-          email: data.email,
-          password: data.password,
-        };
-
-        const user = await instance.post("auth/login", userData);
-        await dispatch(login(user.data));
+        await dispatch(loginUser(data));
         navigate("/");
       } catch (err) {
         return err;
@@ -49,8 +43,7 @@ const AuthRootComponent = () => {
             email: data.email,
             password: data.password,
           };
-          const newUser = await instance.post("auth/register", userData);
-          await dispatch(login(newUser.data));
+          await dispatch(registerUser(userData));
           navigate("/");
         } catch (err) {
           return err;
@@ -70,12 +63,14 @@ const AuthRootComponent = () => {
               errorsMessage={errors}
               navigate={navigate}
               register={register}
+              isLoading={isLoading}
             />
           ) : location.pathname === "/register" ? (
             <RegisterPage
               errorsMessage={errors}
               navigate={navigate}
               register={register}
+              isLoading={isLoading}
             />
           ) : null}
         </StyledBoxFormBlock>

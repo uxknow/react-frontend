@@ -1,5 +1,4 @@
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { useSelector } from "react-redux";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -19,7 +18,6 @@ import {
 } from "./styled";
 
 const TopBarComponent = ({ setIsOpen, isOpen, isNonMobile }) => {
-  const { user } = useSelector((state) => state.auth.user);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -32,7 +30,9 @@ const TopBarComponent = ({ setIsOpen, isOpen, isNonMobile }) => {
               <ChevronRightOutlinedIcon />
             </IconButton>
           )}
-          <Typography variant="h3">Welcome {user?.firstName}</Typography>
+          <Typography variant="h3">
+            Welcome {sessionStorage.getItem("name")}
+          </Typography>
         </StyledBoxMenuBlock>
         <Box display="flex" alignItems="center">
           <StyledGridIconsBlock>

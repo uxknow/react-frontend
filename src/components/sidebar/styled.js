@@ -58,6 +58,9 @@ export const StyledListItemButtonNav = styled(ListItemButton, {
       background: `${colors.active}`,
       color: `${colors.white.DEFAULT}`,
       borderRadius: "4px",
+      "& .MuiSvgIcon-root": {
+        color: `${colors.white.DEFAULT}`,
+      },
       "&:hover": {
         cursor: "auto",
       },
