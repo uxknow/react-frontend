@@ -51,18 +51,14 @@ const addZero = (val) => {
 
 const AreaChart = ({ dataPrices }) => {
   const data = {
-    labels: [
-      ...new Set(
-        dataPrices.map(
-          (price) =>
-            addZero(new Date(price[0]).getDate()) +
-            "." +
-            addZero(new Date(price[0]).getMonth() + 1) +
-            "." +
-            new Date(price[0]).getFullYear()
-        )
-      ),
-    ].filter((_, i) => i % 8 === 1),
+    labels: dataPrices.map(
+      (price) =>
+        addZero(new Date(price[0]).getDate()) +
+        "." +
+        addZero(new Date(price[0]).getMonth() + 1) +
+        "." +
+        new Date(price[0]).getFullYear()
+    ),
     datasets: [
       {
         fill: true,

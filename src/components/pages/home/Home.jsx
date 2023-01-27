@@ -9,22 +9,16 @@ import {
   StyledTypographyCardTitle,
   StyledBoxCardPriceBlock,
   StyledTypographyCardPriceText,
-  StyledTypographyCardCapitalizeText,
+  StyledBoxCardPricePercentText,
 } from "./styled";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 const Home = () => {
   const { favoriteAssets } = useSelector((state) => state.assets);
   const dispatch = useDispatch();
 
   const favoriteAssetName = useMemo(() => ["bitcoin", "ethereum"], []);
-
-  // const uniqueAssets = [
-  //   ...new Set(favoriteAssets.map((item) => JSON.stringify(item))),
-  // ].map((item) => JSON.parse(item));
-
-  // const uniqueAssets = favoriteAssets.filter(
-  //   (item, idx, arr) => idx === arr.findIndex((elem) => elem.name === item.name)
-  // );
 
   const uniqueAssets = favoriteAssets.reduce((acc, curr) => {
     if (!acc.find((elem) => elem.name === curr.name)) {
@@ -38,22 +32,12 @@ const Home = () => {
   }, [favoriteAssetName]);
 
   const renderFavoriteBlock = uniqueAssets.map((item) => {
-    const currentPrice = item.data.prices[0][1].toFixed(3);
-    const currentCap = item.data.market_caps[0][1].toFixed(0);
-    // console.log(
-    //   [
-    //     ...new Set(
-    //       item.data.prices.map(
-    //         (price) =>
-    //           new Date(price[0]).getDate() +
-    //           "/" +
-    //           new Date(price[0]).getMonth() +
-    //           "/" +
-    //           new Date(price[0]).getFullYear()
-    //       )
-    //     ),
-    //   ].filter((item, i) => i % 8 === 1)
-    // );
+    console.log(item.singleAsset);
+    const currentPrice = item.singleAsset[0].current_price;
+    const changePrice = +item.singleAsset
+      .map((elem) => elem.price_change_percentage_24h)
+      .join("");
+
     return (
       <Grid item lg={6} sm={6} xs={12} key={item.name}>
         <StyledGridCardItem container>
@@ -65,13 +49,16 @@ const Home = () => {
               <StyledTypographyCardPriceText>
                 ${currentPrice}
               </StyledTypographyCardPriceText>
-              <StyledTypographyCardCapitalizeText>
-                ${currentCap}
-              </StyledTypographyCardCapitalizeText>
+              <StyledBoxCardPricePercentText
+                className={changePrice < 0 && "pricePercentMinus"}
+              >
+                {changePrice > 0 ? <TrendingUpIcon /> : <TrendingDownIcon />}
+                {changePrice.toFixed(2)}%
+              </StyledBoxCardPricePercentText>
             </StyledBoxCardPriceBlock>
           </Grid>
           <Grid item lg={6} sm={6} xs={12}>
-            <AreaChart dataPrices={item.data.prices} />
+            <AreaChart dataPrices={item.data} />
           </Grid>
         </StyledGridCardItem>
       </Grid>
