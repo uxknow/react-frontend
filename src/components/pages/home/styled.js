@@ -50,12 +50,25 @@ export const StyledTypographyCardPriceText = styled(Typography, {
   lineHeight: 1.6,
 });
 
-export const StyledTypographyCardCapitalizeText = styled(Typography, {
-  name: "StyledTypographyCardCapitalizeText",
+export const StyledBoxCardPricePercentText = styled(Box, {
+  name: "StyledBoxCardPricePercentText",
 })(({ theme }) => {
   const colors = tokens(theme.palette.mode);
 
   return {
-    color: colors.secondary.DEFAULT,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px",
+    color: "#037400",
+    background: "#A9FFA7",
+    borderRadius: "4px",
+    padding: "3px 8px",
+    width: "100px",
+    marginBottom: "14px",
+    "&.pricePercentMinus": {
+      background: "#FFA7A7",
+      color: "#740000",
+    },
   };
 });
